@@ -1,7 +1,7 @@
 #Lucas Sobral Roxo RM98188 Murilo ALves Mansano RM98143
 <h1># RecuFit - GlobalSolution</h1>
 
-O RecuFit é um aplicativo dedicado à reabilitação física, projetado para fornecer aos usuários uma experiência personalizada e eficaz. Este repositório contém o código-fonte que integra a medição fictícia da frequência cardíaca com a plataforma TagoIO usando MQTT. Isso permite monitorar e enviar dados simulados de frequência cardíaca para análise e acompanhamento.
+Este é um código em C++ desenvolvido para plataformas ESP32 que possibilita o monitoramento remoto de batimentos cardíacos utilizando a plataforma TagoIO, integrado e simulado na plataforma Wokwi. O dispositivo, nomeado "RecuFit", gera valores randômicos simulando batimentos cardíacos e os envia para a plataforma TagoIO por meio do protocolo MQTT.
 
 <h2>Descrição do problema</h2>
 
@@ -11,32 +11,31 @@ A RecuFit aborda com precisão o desafio enfrentado por indivíduos que experime
 
 O programa de acompanhamento da frequência cardíaca integrado ao RecuFit estabelece uma conexão essencial, permitindo aos médicos monitorar em tempo real como os pacientes respondem aos exercícios recomendados. Essa integração oferece uma compreensão mais precisa do impacto fisiológico das atividades, identificando exercícios potencialmente prejudiciais. Ao utilizar dados da frequência cardíaca, os médicos podem ajustar os regimes de exercícios de maneira personalizada, otimizando a eficácia do RecuFit e proporcionando cuidados de reabilitação sob medida para cada paciente.
 
-<h2>Configuração do Ambiente</h2>
-Antes de usar o RecuFit, certifique-se de ter as seguintes dependências instaladas:
+<h2>Pré-requisitos</h2>
 
-- <h3>Arduino IDE:</h3> O ambiente de desenvolvimento integrado para programar o ESP8266.
-- <h3>ArduinoJson Library:</h3> Utilizada para formatar o documento JSON contendo dados de frequência cardíaca.
-- <h3>EspMQTTClient Library:</h3> Responsável por gerenciar a comunicação MQTT entre o dispositivo e o servidor MQTT (no caso, mqtt.tago.io).
+<h3>Plataforma</h3> de Simulação Wokwi: Este código foi projetado para ser utilizado na plataforma de simulação Wokwi (https://wokwi.com/projects/380772716087629825).
+<h3>Arduino IDE:</h3> Certifique-se de ter a Arduino IDE instalada para carregar o código no ESP32.
+<h3>Bibliotecas:</h3> Instale as bibliotecas ArduinoJson e EspMQTTClient em sua Arduino IDE antes de carregar o código.
+
+<h2>Configuração do Ambiente</h2>
+Antes de utilizar o código, é necessário configurar algumas variáveis no início do código:
+
+-Wi-Fi: Substitua "Wokwi-GUEST" e "" pelos valores da sua rede Wi-Fi e senha.
+-MQTT: Configure o endereço do servidor MQTT, o usuário (geralmente "Default" para TagoIO), o código do token TagoIO e o nome do dispositivo.
+-Tópico MQTT: O tópico MQTT utilizado para enviar os dados ("frequencia").
 
 <h2>Configuração de Rede e MQTT</h2>
 Antes de usar o código, é necessário realizar algumas configurações:
 
-1. Altere as informações da rede Wifi:
-
-   ```cpp
-   char wifiSsid[] = "SUA_REDE_WIFI"; // Nome da rede Wi-Fi
-   char wifiPass[] = "SUA_SENHA_WIFI"; // Senha da rede Wi-Fi
-
-2. Altere as informações do Tago.io e seu Token de autenticação
-   
-   ```cpp
-   char serverAddress[] = "https://admin.tago.io/devices/SEU_DISPOSITIVO"; // Endereço do servidor Tago.io
-   char tokenHeader[] = "SEU_TOKEN_TAGO"; // Token de autenticação Tago.io
-
 <h2>Utilização</h2>
-O código gera dados fictícios de frequência cardíaca e os envia para o servidor TagoIO usando o protocolo MQTT. Os dados são encapsulados em um formato JSON, contendo a variável "frequencia" e um valor aleatório simulado.
+-Carregue o código no seu ESP32 usando a Arduino IDE.
+-Abra o Monitor Serial para visualizar os valores randômicos gerados.
+-Os valores são publicados no tópico MQTT configurado e enviados para a plataforma TagoIO.
 
-<h3>Observação:</h3> Este é um exemplo básico para fins de simulação. Em um cenário real, os dados de frequência cardíaca seriam adquiridos de sensores reais.
+<h3>Observação:</h3> 
+-O código utiliza a biblioteca 'ArduinoJson' para formatar o JSON e a biblioteca 'EspMQTTClient' para comunicação MQTT.
+-O valor randômico gerado simula os batimentos cardíacos e é enviado a cada 5 segundos.
+-Certifique-se de configurar corretamente as credenciais Wi-Fi, MQTT e TagoIO antes de carregar o código.
 
 <h2>Contribuições</h2>
 Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas, solicitações de pull ou fornecer sugestões para aprimorar o RecuFit.
