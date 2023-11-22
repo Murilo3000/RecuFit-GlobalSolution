@@ -1,3 +1,4 @@
+#Lucas Sobral Roxo RM98188 Murilo ALves Mansano RM98143
 <h1># RecuFit - GlobalSolution</h1>
 
 O RecuFit é um aplicativo dedicado à reabilitação física, projetado para fornecer aos usuários uma experiência personalizada e eficaz. Este repositório contém o código-fonte que integra a medição fictícia da frequência cardíaca com a plataforma TagoIO usando MQTT. Isso permite monitorar e enviar dados simulados de frequência cardíaca para análise e acompanhamento.
